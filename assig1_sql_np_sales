@@ -1,0 +1,88 @@
+use database demo_database;
+---(1)SET PRIMARY KEY----------------(2)CHECK THE ORDER DATE AND SHIP DATE TYPE AND THINK IN WHICH DATA TYPE YOU HAVE TO CHANGE---------------
+
+create or replace table NP_SALES_DATA
+(     order_id VARCHAR(40) PRIMARY KEY,
+      order_date DATE,
+	  ship_date DATE,
+	  ship_mode VARCHAR(20),
+	  customer_name VARCHAR(60),
+	  segment VARCHAR(35),
+	  state VARCHAR(65),
+	  country VARCHAR(35),
+	  market VARCHAR(35),
+	  region VARCHAR(30),
+	  product_id VARCHAR(35),
+	  category VARCHAR(30),
+	  sub_category VARCHAR(35),
+	  product_name STRING,
+	  sales	NUMBER(10,0),
+	  quantity INT,
+	  discount FLOAT,
+	  profit FLOAT,	
+	  shipping_cost	FLOAT,
+	  order_priority VARCHAR(60),
+	  year INT NOT NULL
+ );
+ SELECT * FROM NP_SALES_DATA;
+
+---------------(4) FLAG ,IF DISCOUNT IS GREATER THEN 0 THEN  YES ELSE FALSE AND PUT IT IN NEW COLUMN FRO EVERY ORDER ID.
+
+select *,
+    case  when discount > 0 then 'yes'
+	      else 'FALSE'
+	      end as discount_type
+   from  NP_SALES_DATA;
+   
+----------------------CREATE SALES COPY TABLE   
+ create or replace table NP_SALES_COPY LIKE NP_SALES_DATA;   
+  
+ create or replace table NP_SALES_COPY_DATA AS
+ SELECT * FROM NP_SALES_DATA; 
+ 
+ 
+ SELECT * FROM NP_SALES_COPY_DATA;
+ 
+----------(6). FIND OUT HOW MUCH DAYS TAKEN FOR EACH ORDER TO PROCESS FOR THE SHIPMENT FOR EVERY ORDER ID. -----------------------------------
+  
+SELECT DATEDIFF(DAY,order_date,ship_date)
+   FROM NP_SALES_DATA;
+   
+SELECT * FROM NP_SALES_DATA;
+--------   
+   
+ALTER TABLE NP_SALES_COPY_DATA
+ADD COLUMN DAYS_TAKEN INT;
+   
+UPDATE NP_SALES_COPY_DATA
+SET DAYS_TAKEN = DATEDIFF(DAY,ORDER_DATE,SHIP_DATE);
+   
+ SELECT * FROM NP_SALES_COPY_DATA; 
+
+----------(7).FLAG THE PROCESS DAY AS BY RATING IF IT TAKES LESS OR EQUAL 3  DAYS MAKE 5,LESS OR EQUAL THAN 6 DAYS BUT MORE THAN 3 MAKE 4,LESS THAN 10 BUT MORE THAN 6 MAKE 3,MORE THAN 10 MAKE IT 2 FOR EVERY ORDER ID.
+   ALTER TABLE NP_SALES_COPY_DATA
+   ADD COLUMN PROCESSDAY_RATING INTEGER;
+   
+   UPDATE NP_SALES_COPY_DATA
+   SET PROCESSDAY_RATING = (
+   CASE 
+        WHEN DAYS_TAKEN <= 3 THEN '5'
+		WHEN DAYS_TAKEN <= 6 AND DAYS_TAKEN > 3 THEN '4'
+		WHEN DAYS_TAKEN <= 10 AND DAYS_TAKEN > 6 THEN '3'
+		WHEN DAYS_TAKEN > 10 THEN '2'
+		ELSE 'NONE'
+		END);
+   
+   SELECT * FROM NP_SALES_COPY_DATA;
+
+------(3). EXTACT THE LAST NUMBER AFTER THE - AND CREATE OTHER COLUMN AND UPDATE IT.
+
+alter table  NP_SALES_COPY_DATA
+add column last_digit_order_id int;
+
+update NP_SALES_COPY_DATA
+set last_digit_order_id =  SUBSTRING(order_id,9,16) ;
+
+SELECT * FROM NP_SALES_COPY_DATA;
+--------------------------------------------------------------------------------------------------------
+
