@@ -1,0 +1,51 @@
+Q1.What is BI?
+
+ANS. Business Intelligence (BI) refers to the processes, tools, and technologies used to collect, analyze, and interpret data to gain insights that inform business decisions. 
+It helps organizations understand their performance, identify trends and opportunities, and make data-driven decisions.
+
+Q2.How Power BI Helps in BI and Analysts
+
+ANS.Microsoft Power BI is a popular BI platform that facilitates various BI activities:
+
+Data Visualization: It creates interactive dashboards and reports that communicate insights effectively to audiences with varying technical expertise.
+Data Exploration: Analysts can easily explore and analyze data from various sources through intuitive interfaces and drag-and-drop functionality.
+Data Analysis: Built-in functions and integrations with powerful analytical tools enable complex data manipulation and analysis.
+Data Sharing and Collaboration: Teams can seamlessly share and collaborate on reports and insights within the platform.
+Benefits for Analysts:
+
+Increased Productivity: Streamlined processes, intuitive tools, and automation capabilities save time and effort.
+Improved Data Exploration: Ability to easily delve into and discover meaningful patterns within data sets.
+Enhanced Communication: Create visually compelling reports and dashboards that resonate with various stakeholders.
+Democratization of Data: Analysts can make insights accessible to wider audiences, fostering data-driven decision-making across the organization.
+
+Q3.EXPLAIN Descriptive Analytics:
+
+ANS.Descriptive analytics focuses on understanding what happened and why, providing historical insights into past performance.
+
+What happened? Identify historical trends and patterns in data.
+Why did it happen? Explore factors contributing to observed trends.
+Example: Analyze sales data to understand how product categories perform over time and what factors influence their performance.
+
+Q4.Explain Predictive Analytics
+
+Ans.Predictive analytics attempts to forecast future outcomes and trends based on historical data and statistical models. 
+
+What is likely to happen in the future? Forecast future trends and outcomes based on historical data and models.
+What is the optimal course of action? Provide recommendations based on predicted outcomes.
+Example: Use sales data and customer behavior to predict future demand for products and optimize inventory levels.
+
+Q5.Explain Prescriptive Analytics
+
+ANS.Prescriptive analytics goes beyond prediction to recommend optimal actions based on insights and desired goals. 
+
+What is the best action to take? Recommend actions based on predicted outcomes and desired goals.
+What are the potential consequences of different actions? Evaluate the impact of various decision options.
+Example: Recommend personalized marketing campaigns to customers based on their predicted buying behavior and potential churn risk.
+
+Q6.Real-life Questions Power BI Can Solve:
+ANS.
+1)Which marketing channel drives the most qualified leads?
+2)What factors predict customer churn, and how can we prevent it?
+3)How can we optimize pricing strategies to maximize profitability?
+4)What areas of the supply chain are causing delays and impacting efficiency?
+5)What trends in customer sentiment can inform product development and marketing efforts?
