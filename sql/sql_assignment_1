@@ -1,0 +1,237 @@
+create database ineuron;
+
+use ineuron;
+
+create table shopping_history (
+product varchar(50) not null,
+quantity integer not null,
+unit_price integer not null);
+
+INSERT INTO shopping_history (product, quantity, unit_price)
+VALUES
+  ('Milk', 3, 10),
+  ('Bread', 7, 3),
+  ('Bread', 5, 2);
+  
+/* task 1
+ Q)WRIte an SQL query that, for each "product", retums the total amount of money spent on it. 
+		Rows should be ordered in descending alphabetical order by "product" */
+	
+ SELECT * from shopping_history;      
+
+
+SELECT product, SUM(quantity * unit_price) AS total
+FROM shopping_history
+GROUP BY product
+ORDER BY product DESC;
+
+/* task 2 */
+/* Write an SQL query that finds all clients who talked for at least 10 minutes in total. The table of results should contain
+ one column: the name of the client (name). Rows should be sorted alphabetically. */
+
+
+
+create table phones (
+ name varchar(20) not null unique, 
+ phone_number int not null unique);
+ 
+create table calls (
+id integer not null, 
+caller integer not null,
+ callee integer not  null, 
+ duration integer not null,
+ unique(id));
+ 
+ insert into phones(name,phone_number) values 
+('Jack',1234),
+('Lena',3333),
+('Mark',9999),
+('Anna',7582);
+
+
+select * from phones;
+insert into calls values(25,1234,7582,8);
+insert into calls values(7,9999,7582,1);
+insert into calls values(18,9999,3333,4);
+insert into calls values(2,7582,3333,3);
+insert into calls values(3,3333,1234,1);
+insert into calls values(21,3333,1234,1);
+
+select * from calls;
+
+-- 1)
+with cte as
+(SELECT phones.name, SUM(calls.duration) AS total_duration
+FROM phones
+JOIN calls ON phones.phone_number = calls.caller
+OR phones.phone_number = calls.callee
+GROUP BY phones.name
+HAVING SUM(calls.duration) >= 10 
+ORDER BY phones.name)
+select name from cte;
+
+-- 2)
+create table phones1(
+`name` varchar(20) not null unique,
+phone_number integer not null unique
+);
+
+insert into phones1 values ('john',6356);
+insert into phones1 values ('addison',4315);
+insert into phones1 values ('kate',8003);
+insert into phones1 values ('ginny',9831);
+
+create table calls1(
+id integer not null,
+caller integer not null,
+callee integer not null,
+duration integer not null,
+unique(id)
+);
+
+insert into calls1 values(65,8003,9831,7);
+insert into calls1 values(100,9831,8003,3);
+insert into calls1 values(145,4315,9831,18);
+
+
+with cte as
+(SELECT phones1.name, SUM(calls1.duration) AS total_duration
+FROM phones1 
+JOIN calls1 ON phones1.phone_number = calls1.caller
+OR phones1.phone_number = calls1.callee
+GROUP BY phones1.name
+HAVING SUM(calls1.duration) >= 10 
+ORDER BY phones1.name)
+select name from cte;
+
+
+/*  Write an SQL query that returns a table containing one column, balance. 
+    The table should contain one row with the total balance of your account at the end of the year, 
+    including the fee for holding a credit card. */
+
+
+ CREATE TABLE transactions(
+ Amount INTEGER NOT NULL,
+ Date DATE NOT NULL
+ );
+ 
+ INSERT INTO transactions (Amount, Date) VALUES (1000, '2020-01-06');
+ INSERT INTO transactions (Amount, Date) VALUES (-10, '2020-01-14');
+ INSERT INTO transactions (Amount, Date) VALUES (-75,'2020-01-20');
+ INSERT INTO transactions (Amount, Date) VALUES (-5,'2020-01-25');
+ INSERT INTO transactions (Amount, Date) VALUES (-4,'2020-01-29');
+ INSERT INTO transactions (Amount, Date) VALUES (2000,'2020-03-10');
+ INSERT INTO transactions (Amount, Date) VALUES (-75, '2020-03-12');
+ INSERT INTO transactions (Amount, Date) VALUES (-20,'2020-03-15');
+ INSERT INTO transactions (Amount, Date) VALUES (40,'2020-03-15');
+ INSERT INTO transactions (Amount, Date) VALUES (-50,'2020-03-17');
+ INSERT INTO transactions (Amount, Date) VALUES (200, '2020-10-10');
+ INSERT INTO transactions (Amount, Date) VALUES (-200,'2020-10-10');
+ 
+ select * from transactions;
+ 
+ --  1.solution
+ 
+select (tot-deduction) as balance 
+from
+(
+  select sum(amount) as tot , 
+			(
+			select ((12*5)-(count(month) * 5)) as tot from
+			     (
+				  SELECT sum(amount) AS amount,
+								extract(month from date) AS month
+								FROM transactions
+								WHERE amount < 0
+								GROUP BY month
+								HAVING count(*) > 2
+								ORDER BY month
+							) x
+						where amount<=-100
+					) as deduction
+	from transactions
+) y;
+
+-- 2.solution
+
+CREATE TABLE transactions_1(
+ Amount INTEGER NOT NULL,
+ Date DATE NOT NULL
+ );
+ 
+
+INSERT INTO transactions_1 (amount, date)
+VALUES
+(1, '2020-06-29'),
+(35, '2020-02-20'),
+(-50, '2020-02-03'),
+(-1, '2020-02-26'),
+(-200, '2020-08-01'),
+(-44, '2020-02-07'),
+(-5, '2020-02-25'),
+(1, '2020-06-29'),
+(1, '2020-06-29'),
+(-100, '2020-12-29'),
+(-100, '2020-12-30'),
+(-100, '2020-12-31');
+
+select sum(amount) as amount from transactions_1;
+
+
+select (tot-deduction) as balance 
+from
+(
+  select sum(amount) as tot , 
+			(
+			select ((12*5)-(count(month) * 5)) as tot from
+			     (
+				  SELECT sum(amount) AS amount,
+							extract(month from date) AS month
+								FROM transactions_1
+								WHERE amount like '-%'
+								GROUP BY month
+								HAVING count(*) > 2
+								ORDER BY month
+							) x
+						where amount<=-100
+					) as deduction
+	from transactions_1
+) y;
+
+-- 3.solution
+
+CREATE TABLE transactions_2(
+ Amount INTEGER NOT NULL,
+ Date DATE NOT NULL
+ );
+ 
+INSERT INTO transactions_2 (amount, date)
+VALUES
+(6000, '2020-04-03'),
+(5000, '2020-04-02'),
+(4000, '2020-04-01'),
+(3000, '2020-03-01'),
+(2000, '2020-02-01'),
+(1000, '2020-01-01');
+
+select (tot-deduction) as balance 
+from
+(
+  select sum(amount) as tot , 
+			(
+			select ((12*5)-(count(month) * 5)) as tot from
+			     (
+				  SELECT sum(amount) AS amount,
+							extract(month from date) AS month
+								FROM transactions_2
+								WHERE amount like '-%'
+								GROUP BY month
+								HAVING count(*) > 2
+								ORDER BY month
+							) x
+						where amount<=-100
+					) as deduction
+	from transactions_2
+) y;
+
+
