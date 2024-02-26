@@ -1,0 +1,46 @@
+ans_1).In the given elements:
+
+Values: 'hello', -87.8, 6
+Expressions: *, -, /, +
+
+ans_2).A string is a sequence of characters enclosed within single quotes (' ') or double quotes (" "). It represents textual data. A variable, on the other hand, is a 
+symbolic name that refers to a value. Variables can hold different types of data, including strings, numbers, or other types of values.
+
+ans_3).Three different data types are:
+
+Integer: Represents whole numbers without any fractional part, e.g., 10, -5, 0.
+Floating-point: Represents numbers with a decimal point or exponential notation, e.g., 3.14, -0.001, 2.5e-3.
+String: Represents textual data enclosed within quotes, e.g., 'hello', "world", '123'.
+
+ans_4).An expression is made up of operators, variables, and values that evaluate to a single value. Expressions perform operations or calculations and produce a result. 
+All expressions, when evaluated, produce a value.
+
+ans_5).An expression evaluates to a value, whereas a statement performs an action. In the assignment statement "spam = 10", "spam" is a variable, and "10" is a value. 
+The entire statement is an example of a statement because it assigns the value 10 to the variable spam.
+
+ans_6).After running the code, the variable "bacon" contains the value 22. The expression "bacon + 1" evaluates to 23, but it doesn't update the value of "bacon" unless it's 
+assigned back to the variable.
+
+ans_7).The values of the following two terms should be the same:
+
+'spam' + 'spamspam' = 'spamspamspam'
+'spam' * 3 = 'spamspamspam'
+
+ans_8)."eggs" is a valid variable name because it follows the rules for naming variables in Python, which state that a variable name must start with a letter or underscore (_) 
+and can be followed by letters, digits, or underscores. "100" is invalid as a variable name because it starts with a digit, which is not allowed as per Python namingconventions.
+
+ans_9).Three functions to convert values to different types are:
+
+int(): Converts a value to an integer.
+float(): Converts a value to a floating-point number.
+str(): Converts a value to a string.
+
+ans_10).The expression causes an error because Python doesn't allow concatenating strings with integers directly. To fix it, you need to convert the integer to a string using 
+the str() function:
+
+python code
+'I have eaten ' + str(99) + ' burritos.'
+
+
+
+
