@@ -1,0 +1,107 @@
+1. Boolean Data Type and Operators:
+
+Values: The two values of the Boolean data type are True and False. They represent logical states like on/off, yes/no, or true/false.
+Operators:
+Comparison Operators:
+==: Equal to
+!=: Not equal to
+<: Less than
+>: Greater than
+<=: Less than or equal to
+>=: Greater than or equal to
+Logical Operators:
+and: Returns True only if both operands are True.
+or: Returns True if at least one operand is True.
+not: Inverts the truth value of the operand.
+
+2. Boolean Operator Truth Tables:
+
+Operator	Operand 1	Operand 2	Result
+and	True	True	True
+and	True	False	False
+and	False	True	False
+and	False	False	False
+or	True	True	True
+or	True	False	True
+or	False	True	True
+or	False	False	False
+not	True		False
+not	False		True
+
+3. Expression Evaluation:
+
+(5 > 4) and (3 == 5): False (the first operand is True but the second is False)
+not (5 > 4): False (notting True results in False)
+(5 > 4) or (3 == 5): True (at least one operand is True)
+not ((5 > 4) or (3 == 5)): False (notting True results in False)
+(True and True) and (True == False): False (the second operand is False)
+(not False) or (not True): True (notting False results in True)
+
+4. Equal to vs. Assignment:
+
+Equal to (==): Compares the values of two operands and returns True if they are equal, False otherwise.
+Assignment (=): Assigns a value to a variable. It does not perform comparison.
+
+5. Conditional Statements and Code Blocks:
+
+Code Blocks: The indented sections of code within an if statement or else block.
+Conditions: Expressions used to control the execution of code blocks. They evaluate to True or False.
+Example:
+
+Python
+spam = 0
+if spam == 10:  # Condition
+    print('eggs')
+else:  # Code block executed if condition is False
+    print('ham')
+print('spam')  # Outside the code block
+Use code with caution.
+
+6. Code for Greetings:
+
+Python
+spam = 1
+
+if spam == 1:
+    print('Hello')
+elif spam == 2:
+    print('Howdy')
+else:
+    print('Greetings!')
+Use code with caution.
+
+7. Break and Continue:
+
+break: Exits the loop completely.
+continue: Skips the current iteration and moves to the next.
+
+8. Looping Examples:
+
+a) For loop:
+
+Python
+for i in range(1, 11):  # 1 to 10 (inclusive)
+    print(i)
+Use code with caution.
+b) While loop:
+
+Python
+i = 1
+while i <= 10:
+    print(i)
+    i += 1
+Use code with caution.
+
+
+9. Escaping Infinite Loops:
+
+On most systems, press Ctrl + C to interrupt the program.
+This sends a signal to the program to terminate its execution.
+
+
+10. Calling a Function from a Module:
+
+Python
+import spam
+
+spam.bacon()  # Assuming bacon() is defined in the spam module
