@@ -1,0 +1,54 @@
+The feature responsible for generating Regex objects is the re.compile() function in Python's re module.
+
+Raw strings (r'') are often used in Regex objects to avoid unintended escape sequences. Raw strings treat backslashes (\) as literal characters, so they are particularly useful when defining regular expressions where backslashes are common, such as in file paths or escape sequences.
+
+The search() method returns a Match object if the pattern is found in the string, or None if the pattern is not found.
+
+To get the actual strings that match the pattern from a Match object, you can use the group() method. group(0) returns the entire match, while group(1), group(2), etc., return the substrings matched by the corresponding capture groups in the regular expression.
+
+In the regex r'(\d\d\d)-(\d\d\d-\d\d\d\d)', group 0 covers the entire match, group 1 covers the first three digits, and group 2 covers the remaining digits separated by hyphens.
+
+To fit real parentheses and periods in a regex pattern, you need to escape them with a backslash (\(, \), \.).
+
+The findall() method returns a list of all non-overlapping matches of the pattern in the string. If the pattern contains capturing groups, it returns a list of tuples where each tuple represents a match and contains the substrings matched by the capturing groups. Otherwise, it returns a list of strings representing the matched substrings.
+
+In standard expressions, the | character represents the logical OR operator, allowing you to specify multiple alternatives in a pattern.
+
+In regular expressions, the . character (dot) stands for any single character except newline.
+
+In regular expressions, the + character matches one or more occurrences of the preceding element, while the * character matches zero or more occurrences of the preceding element.
+
+{4} matches exactly four occurrences of the preceding element, while {4,5} matches between four and five occurrences of the preceding element.
+
+In regular expressions, the shorthand character classes \d, \w, and \s signify:
+
+\d: Any digit (equivalent to [0-9]).
+\w: Any alphanumeric character (equivalent to [a-zA-Z0-9_]).
+\s: Any whitespace character (equivalent to [ \t\n\r\f\v]).
+In regular expressions, the shorthand character classes \D, \W, and \S signify:
+
+\D: Any non-digit character (equivalent to [^0-9]).
+\W: Any non-alphanumeric character (equivalent to [^a-zA-Z0-9_]).
+\S: Any non-whitespace character (equivalent to [^ \t\n\r\f\v]).
+.*? is a non-greedy quantifier that matches any character (including newline characters) zero or more times, as few times as possible, while .* is a greedy quantifier that matches any character (including newline characters) zero or more times, as many times as possible.
+
+The syntax for matching both numbers and lowercase letters with a character class is [0-9a-z] or [a-z0-9].
+
+To make a normal expression in regex case insensitive, you can pass the re.IGNORECASE or re.I flag as the second argument to re.compile().
+
+The . character normally matches any character except newline. If re.DOTALL is passed as the second argument in re.compile(), the . character matches any character, including newline.
+
+numRegex.sub('X', '11 drummers, 10 pipers, five rings, 4 hen') will return 'X drummers, X pipers, five rings, X hen'. The sub() method replaces all occurrences of the pattern \d+ (one or more digits) in the input string with the replacement string 'X'.
+
+Passing re.VERBOSE as the second argument to re.compile() allows you to write regular expressions in a more readable and organized format by ignoring whitespace and comments within the pattern.
+
+A regex that matches a number with a comma for every three digits is r'^\d{1,3}(,\d{3})*$'.
+
+A regex that matches the full name of someone whose last name is Watanabe is r'[A-Z][a-zA-Z]*\sWatanabe'.
+
+A regex that matches a sentence with specific words and ends with a period is r'(Alice|Bob|Carol)\s(eats|pets|throws)\s(apples|cats|baseballs)\.'.
+
+
+
+
+
