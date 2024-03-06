@@ -1,0 +1,43 @@
+Escape characters: Escape characters are special characters used in strings to represent characters that are difficult or impossible to type directly, such as newline, tab, or backslash. They are preceded by a backslash () to indicate that the following character should be treated differently.
+
+n and t escape characters:
+
+\n: Represents a newline character, causing the text following it to start on a new line.
+\t: Represents a tab character, causing the text following it to be indented as if by a tab space.
+Including backslash characters: To include a backslash character in a string, you need to escape it by typing two backslashes (\\). For example, "C:\\Windows\\System32" represents the file path "C:\Windows\System32".
+
+Escaping single quote character: In Python, single quotes (') and double quotes (") can be used interchangeably to delimit strings. Therefore, if a string contains a single quote character, it can be enclosed in double quotes without any problem, and vice versa. In the given example, "Howl's Moving Castle" uses double quotes to delimit the string, so the single quote inside the string does not need to be escaped.
+
+Writing a string of newlines: If you don't want to use the \n escape character to represent newlines, you can use triple quotes (""") to create a multi-line string. For example:
+
+python
+Copy code
+multiline_string = """This is line 1.
+This is line 2.
+This is line 3."""
+Values of expressions:
+
+'Hello, world!'[1]: Returns the character at index 1, which is 'e'.
+'Hello, world!'[0:5]: Returns the substring from index 0 to index 4 (exclusive), which is 'Hello'.
+'Hello, world!'[:5]: Returns the substring from the beginning to index 4 (exclusive), which is 'Hello'.
+'Hello, world!'[3:]: Returns the substring from index 3 to the end, which is 'lo, world!'.
+Values of expressions:
+
+'Hello'.upper(): Returns the string 'HELLO'.
+'Hello'.upper().isupper(): Returns True because the entire string is uppercase.
+'Hello'.upper().lower(): Returns the string 'hello' after converting it to lowercase.
+Values of expressions:
+
+'Remember, remember, the fifth of July.'.split(): Splits the string into a list of words based on whitespace characters. Returns ['Remember,', 'remember,', 'the', 'fifth', 'of', 'July.'].
+'-'.join('There can only one.'.split()): Splits the string into a list of words based on whitespace characters, then joins them back together with hyphens - between each word. Returns 'There-can-only-one.'.
+String justification methods:
+
+rjust(width, fillchar): Right-justifies the string within a field of the specified width, padding the left side with the specified fill character.
+ljust(width, fillchar): Left-justifies the string within a field of the specified width, padding the right side with the specified fill character.
+center(width, fillchar): Centers the string within a field of the specified width, padding both sides with the specified fill character.
+Removing whitespace: The strip() method is commonly used to remove leading and trailing whitespace characters from a string. Alternatively, you can use lstrip() to remove leading whitespace or rstrip() to remove trailing whitespace.
+
+
+
+
+
