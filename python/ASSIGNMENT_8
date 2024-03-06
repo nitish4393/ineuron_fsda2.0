@@ -1,0 +1,38 @@
+Q1) Is the Python Standard Library included with PyInputPlus?
+
+ANS.No, PyInputPlus is not part of the Python Standard Library. It's a third-party library that needs to be installed separately using pip install pyinputplus.
+
+Q2.Why is PyInputPlus commonly imported with import pyinputplus as pypi?
+
+ANS.This is a matter of convenience and style. The statement import pyinputplus as pypi assigns the module pyinputplus the alias pypi. This allows you to reference the module functions using pypi instead of the full module name in your code.
+
+Q3)How do you distinguish between inputInt() and inputFloat()?
+
+ANS.inputInt(): This function is specifically designed to accept integer input. It validates the input to ensure it represents an integer value within the specified range (if provided). It returns an integer (int) as the output.
+inputFloat(): This function is intended for taking floating-point number input. It performs validation to ensure the input is a valid floating-point number and falls within the specified range (if provided). It returns a floating-point number (float) as the output.
+
+ANS4)Ensuring the user enters a whole number between 0 and 99:
+
+Use inputInt() with appropriate keyword arguments:
+
+Python
+number = pyinputplus.inputInt(min=0, max=99, blank=False)  # Ensure non-blank input
+Use code with caution.
+min=0: Sets the minimum allowed value to 0.
+max=99: Sets the maximum allowed value to 99.
+blank=False: Prevents accepting blank input.
+
+Q5)What is transferred to the keyword arguments allowRegexes and blockRegexes?
+
+ANS)allowRegexes: This argument takes a list of regular expressions. The input is only accepted if it matches at least one of the provided regular expressions.
+blockRegexes: This argument takes a list of regular expressions. The input is rejected if it matches any of the provided regular expressions.
+
+Q6)Behavior of inputStr(limit=3) with blank input:
+
+ANS)inputStr(limit=3) prompts the user for input up to three times.
+If the user enters a blank input three times consecutively, inputStr will raise a pyinputplus.RetryLimitException. This exception indicates that the user has exceeded the allowed number of invalid attempts.
+
+Q7)Behavior of inputStr(limit=3, default='hello') with blank input:
+
+ANS)inputStr(limit=3, default='hello') allows the user to enter input up to three times.
+If the user enters a blank input three times consecutively, the default value of "hello" will be returned instead of raising an exception.
