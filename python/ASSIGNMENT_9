@@ -1,0 +1,24 @@
+Relative path: A relative path refers to the location of a file or directory relative to the current working directory.
+
+Absolute path: An absolute path starts with the root directory of the file system on the operating system. In Unix-based systems (like Linux or macOS), it typically starts with a forward slash (/), while in Windows, it usually starts with a drive letter followed by a colon (e.g., C:).
+
+os.getcwd() and os.chdir():
+
+os.getcwd(): Returns the current working directory as a string.
+os.chdir(path): Changes the current working directory to the specified path.
+. and .. folders:
+
+. represents the current directory.
+.. represents the parent directory.
+In C:\bacon\eggs\spam.txt, C:\bacon\eggs is the dir name, and spam.txt is the base name.
+
+Modes for open() function:
+
+'r': Read mode (default). Opens a file for reading.
+'w': Write mode. Opens a file for writing. If the file already exists, it will be truncated. If the file does not exist, a new file will be created.
+'a': Append mode. Opens a file for writing. If the file already exists, new data will be appended to the end of the file.
+If an existing file is opened in write mode ('w'), its previous contents will be overwritten. If the file does not exist, a new file will be created.
+
+The read() method reads the entire contents of a file as a single string, while the readlines() method reads the contents of the file line by line and returns a list where each element is a line of text.
+
+A shelf value in Python resembles a dictionary data structure. It is a persistent, dictionary-like object that stores key-value pairs on disk.
