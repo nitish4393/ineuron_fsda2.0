@@ -1,0 +1,45 @@
+ANS1) shutil.copy() vs. shutil.copytree():
+
+shutil.copy(src, dst): This function copies a single file from the src path to the dst path. If dst is a directory, the file will be copied into that directory with the same filename.
+shutil.copytree(src, dst): This function recursively copies an entire directory tree from src to dst. It creates a new directory at dst and copies all files and subdirectories from src to the new directory.
+
+ANS2) Function for renaming files:
+
+The os.rename(src, dst) function is commonly used to rename files. It takes two arguments: the source path of the file to be renamed (src) and the destination path with the new name (dst).
+
+ANS3) Difference between delete functions in send2trash and shutil:
+
+send2trash: The send2trash module sends files to the system's recycle bin or trash instead of permanently deleting them. It provides a send2trash.send2trash() function to delete files or directories safely.
+shutil: The shutil module provides functions like shutil.rmtree() to recursively delete directories and shutil.remove() to delete files. Unlike send2trash, these functions permanently delete files and directories without moving them to the recycle bin.
+
+ANS4) Equivalent ZipFile method to File objects' open() method:
+
+The ZipFile method equivalent to the open() method for File objects is ZipFile.open(filename, mode). It allows you to open a file inside a ZIP archive and specify the mode ('r' for reading, 'w' for writing, 'a' for appending).
+
+ANS5) Program to search for files with a certain file extension and copy them to a new folder:
+
+python
+Copy code
+import os
+import shutil
+
+def copy_files_by_extension(source_folder, destination_folder, extension):
+    for foldername, subfolders, filenames in os.walk(source_folder):
+        for filename in filenames:
+            if filename.endswith(extension):
+                source_file = os.path.join(foldername, filename)
+                shutil.copy(source_file, destination_folder)
+
+# Example usage:
+source_folder = '/path/to/source_folder'
+destination_folder = '/path/to/destination_folder'
+extension = '.pdf'  # Change to desired file extension
+copy_files_by_extension(source_folder, destination_folder, extension)
+
+This program recursively searches the source_folder for files with the specified extension (extension) and copies them to the destination_folder.
+You can modify the source_folder, destination_folder, and extension variables as needed.
+
+
+
+
+
