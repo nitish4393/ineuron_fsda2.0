@@ -1,0 +1,60 @@
+Assert statement for negative integer:
+
+python
+Copy code
+assert spam >= 0, 'spam cannot be a negative integer'
+Assert statement for case-insensitive string comparison:
+
+python
+Copy code
+assert eggs.lower() != bacon.lower(), 'eggs and bacon cannot have the same value (case-insensitive)'
+Assert statement that always triggers an AssertionError:
+
+python
+Copy code
+assert False, 'This assertion always triggers an AssertionError'
+Lines needed to call logging.debug():
+
+python
+Copy code
+import logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+Lines to send logging message to a file:
+
+python
+Copy code
+import logging
+logging.basicConfig(filename='programLog.txt', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+Five levels of logging:
+
+DEBUG
+INFO
+WARNING
+ERROR
+CRITICAL
+Code to disable all logging messages:
+
+python
+Copy code
+logging.disable(logging.CRITICAL)
+Advantages of logging over print():
+
+Logging allows you to control the verbosity of messages using different log levels.
+Logging messages can be directed to different destinations (console, file, etc.) based on configuration.
+Logging provides more flexibility and control over formatting and handling of messages.
+Logging can be easily disabled or configured without modifying the code.
+Differences between Step Over, Step In, and Step Out in debugger:
+
+Step Over: Executes the current line of code and stops at the next line, skipping over function calls.
+Step In: Steps into the function call, allowing you to debug within the called function.
+Step Out: Executes the rest of the current function and returns to the line where the function was called.
+Debugger stops after Continue:
+The debugger will stop when it encounters another breakpoint or reaches the end of the program.
+
+Concept of a breakpoint:
+A breakpoint is a marker set in the code that tells the debugger to pause execution when it reaches that point, allowing you to inspect variables, step through code, and diagnose issues.
+
+
+
+
+
