@@ -1,0 +1,90 @@
+ans1. File Opening Modes:
+
+PdfFileReader: Open in binary read mode ('rb').
+PdfFileWriter: Open in binary write mode ('wb').
+ans2. Getting a Page Object:
+
+Use the getPage() method on a PdfFileReader object, passing the zero-based page index (page 5 translates to index 4):
+
+Python
+pdf_reader = PdfFileReader(open('my_pdf.pdf', 'rb'))
+page_5 = pdf_reader.getPage(4)
+Use code with caution.
+
+ans3. Number of Pages:
+
+The PdfFileReader object itself doesn't have a direct attribute for the number of pages. However, you can get the total number of pages using getNumPages():
+
+Python
+num_pages = pdf_reader.getNumPages()
+Use code with caution.
+
+ans4. Encrypted PDF:
+
+If the PDF is password-protected, you need to provide the password when creating the PdfReader object using the password argument:
+
+Python
+pdf_reader = PdfFileReader(open('encrypted.pdf', 'rb'), password='swordfish')
+Use code with caution.
+
+ans5. Page Rotation (PyPDF2 doesn't support direct rotation):
+
+Unfortunately, PyPDF2 doesn't have built-in methods for page rotation. You might need to explore third-party libraries or alternative approaches like creating a new PDF with rotated pages.
+
+ans6. Run vs. Paragraph (Assuming ReportLab):
+
+Run: Represents a single text segment with formatting attributes like font, size, and color.
+Paragraph: Groups multiple Run objects together to form a cohesive paragraph with alignment and spacing properties.
+
+ans7. List of Paragraphs (Assuming ReportLab):
+
+If you're using ReportLab, the specific method depends on the document structure. Here are a couple of possibilities:
+
+For a single-paragraph document:
+Python
+paragraphs = doc.getStory()  # Assuming doc is a ReportLab document
+Use code with caution.
+For a document with multiple top-level elements:
+You might need to iterate through the document's structure to extract paragraphs.
+
+ans8. Text Formatting Properties:
+
+These properties (bold, underline, italic, strike, outline) are typically attributes of a Run object (assuming ReportLab).
+
+ans9. Bold Variable Values:
+
+The values for bold can vary depending on the library:
+
+True: Makes the text bold.
+False: Makes the text normal (not bold).
+None: Inherits the bold formatting from the parent element (if applicable).
+
+ans10. Creating a New Word Document (Limited Options with Python):
+
+Pure Python libraries have limited Word document creation capabilities. Here are some potential approaches:
+
+ReportLab (partial support): Can create documents with basic text formatting and layout, but not full-fledged Word features.
+Third-party libraries: Explore libraries like docx or python-docx that provide more comprehensive Word document creation functionalities.
+
+ans11. Adding a Paragraph (Assuming ReportLab):
+
+Create a Paragraph object with the desired text and add it to the document's story:
+
+Python
+from reportlab.lib import styles
+from reportlab.platypus import Paragraph
+
+paragraph = Paragraph("Hello, there!", styles.Normal)
+doc.append(paragraph)
+Use code with caution.
+
+ans12. Heading Levels:
+
+Heading levels in Word documents are typically represented by integers:
+
+0: Normal text
+1: Heading 1
+2: Heading 2
+...
+9: Heading 9
+While these answers assume ReportLab for text formatting, the concepts and approaches can be adapted to other Python libraries for PDF or Word document manipulation. Remember to check the specific library's documentation for available features and methods.
