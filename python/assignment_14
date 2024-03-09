@@ -1,0 +1,95 @@
+1. RGBA Stands For:
+
+Red, Green, Blue, Alpha. RGBA is a color format that represents each pixel in an image using four channels:
+Red, Green, and Blue channels determine the color intensity (0-255 for each).
+Alpha channel defines the transparency level (0-255, 0 being fully transparent, 255 being fully opaque).
+
+2. Getting RGBA Values (Pillow):
+
+There are two main approaches to get RGBA values of image pixels in Pillow:
+
+Accessing Individual Pixels:
+
+Python
+from PIL import Image
+
+img = Image.open("image.png")
+width, height = img.size  # Get image dimensions
+
+# Access a specific pixel's RGBA values (x, y coordinates)
+x = 100
+y = 50
+r, g, b, a = img.getpixel((x, y))
+print(f"Pixel at ({x}, {y}): RGBA = ({r}, {g}, {b}, {a})")
+Use code with caution.
+Iterating Over All Pixels:
+
+Python
+for x in range(width):
+    for y in range(height):
+        r, g, b, a = img.getpixel((x, y))
+        # Process RGBA values for each pixel here
+Use code with caution.
+
+3. Box Tuple:
+
+A box tuple is a 4-element tuple representing a rectangular area in an image. It's used in many Pillow functions to define regions of interest or areas for drawing.
+
+The format is: (left, top, right, bottom), where:
+
+left: X-coordinate of the top-left corner.
+top: Y-coordinate of the top-left corner.
+right: X-coordinate of the bottom-right corner (one pixel beyond the last pixel).
+bottom: Y-coordinate of the bottom-right corner (one pixel beyond the last pixel).
+Example: box = (10, 20, 150, 80) defines a rectangle with top-left at (10, 20) and bottom-right at (149, 79).
+
+4. Image Width and Height:
+
+Python
+from PIL import Image
+
+img = Image.open("image.png")  # Replace with your image path
+
+# Get image dimensions
+width, height = img.size
+print(f"Image width: {width}, Image height: {height}")
+Use code with caution.
+
+5. Excluding Lower-Left Quarter:
+
+To get a new Image object excluding the lower-left quarter (assuming width and height are already retrieved):
+
+Python
+quarter_width = width // 4
+quarter_height = height // 4
+
+box = (0, 0, width, height - quarter_height)  # Exclude lower-left quarter
+new_img = img.crop(box)  # Create a new image with the cropped area
+Use code with caution.
+
+6. Saving Modified Image:
+
+Python
+new_img.save("modified_image.png")  # Replace with your desired filename
+Use code with caution.
+
+7. Pillow's Shape-Drawing Module:
+
+The PIL.ImageDraw module provides functionalities for drawing shapes on an Image object.
+
+8. Drawing on Images:
+
+Image objects themselves don't have drawing methods. You create a Draw object associated with an Image object to perform drawing operations.
+Python
+from PIL import Image, ImageDraw
+
+img = Image.open("image.png")
+draw = ImageDraw.Draw(img)  # Create a Draw object associated with the image
+
+# Draw a rectangle (example)
+draw.rectangle((100, 50, 200, 100), fill="red", outline="blue")
+
+# Save the modified image
+img.save("image_with_shapes.png")
+Use code with caution.
+Remember to replace "image.png" with your actual image file path in these examples.
