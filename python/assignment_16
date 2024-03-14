@@ -1,0 +1,64 @@
+# 1. Create years_list
+birth_year = 1980  # Replace with your actual birth year
+years_list = list(range(birth_year, birth_year + 6))  # Creates list from birth year to 5th birthday year
+
+# 2. Year of your third birthday
+third_birthday_year = years_list[2]  # Accesses element at index 2 (year 2 after birth)
+
+# 3. Year you were the oldest
+oldest_year = years_list[-1]  # Accesses the last element (your 5th birthday year)
+
+# 4. Create a list called things
+things = ["mozzarella", "cinderella", "salmonella"]
+
+# 5. Capitalize the element referring to a person
+things[1] = things[1].title()  # Capitalizes the second element ("Cinderella")
+print(things)  # Printing shows the list remains unchanged
+
+# 6. Create a surprise list
+surprise_list = ["Groucho", "Chico", "Harpo"]
+
+# 7. Modify and print the last element
+surprise_list[-1] = surprise_list[-1].lower()  # Lowercase the last element
+surprise_list.reverse()  # Reverse the order
+surprise_list[-1] = surprise_list[-1].upper()  # Uppercase the last element (now first)
+print(surprise_list)  # Prints ["HARPO", "chico", "Groucho"]
+
+# 8. English-to-French dictionary
+e2f = {"dog": "chien", "cat": "chat", "walrus": "morse"}
+print(e2f)
+
+# 9. French word for walrus
+walrus_word = e2f["walrus"]
+print(walrus_word)  # Prints "morse"
+
+# 10. French-to-English dictionary
+f2e = {value: key for key, value in e2f.items()}  # Creates dictionary from reversed key-value pairs
+
+# 11. English equivalent of "chien"
+english_chien = f2e["chien"]
+print(english_chien)  # Prints "dog"
+
+# 12. Set of English words from e2f keys
+english_words = set(e2f.keys())
+print(english_words)  # Prints {"dog", "cat", "walrus"}
+
+# 13. Multilevel dictionary
+life = {
+    'animals': {
+        'cats': ['Henri', 'Grumpy', 'Lucy'],
+        'octopi': {},  # Empty dictionary
+        'emus': {}  # Empty dictionary
+    },
+    'plants': {},  # Empty dictionary
+    'other': {}  # Empty dictionary
+}
+
+# 14. Print top-level keys
+print(life.keys())  # Prints dict_keys(['animals', 'plants', 'other'])
+
+# 15. Print keys for 'animals'
+print(life['animals'].keys())  # Prints dict_keys(['cats', 'octopi', 'emus'])
+
+# 16. Print values for 'cats'
+print(life['animals']['cats'])  # Prints ['Henri', 'Grumpy', 'Lucy']
